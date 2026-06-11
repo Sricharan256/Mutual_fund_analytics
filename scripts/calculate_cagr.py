@@ -1,3 +1,13 @@
+"""
+Bluestock Mutual Fund Analytics
+
+Script: calculate_cagr.py
+
+Purpose:
+Calculate CAGR for all mutual fund schemes.
+
+Author: Sricharan Medaboina
+"""
 import pandas as pd
 
 nav = pd.read_csv(

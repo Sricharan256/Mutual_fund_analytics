@@ -1,3 +1,15 @@
+
+"""
+Bluestock Mutual Fund Analytics
+
+Script: calculate_drawdown.py
+
+Purpose:
+Calculate Maximum Drawdown for all mutual fund schemes.
+
+Author: Sricharan Medaboina
+"""
+
 import pandas as pd
 
 nav = pd.read_csv(

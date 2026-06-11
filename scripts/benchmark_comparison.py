@@ -1,3 +1,14 @@
+"""
+Bluestock Mutual Fund Analytics
+
+Script: benchmark_comparison.py
+
+Purpose:
+Compare mutual fund performance against benchmark
+indices and generate comparative analytics.
+
+Author: Sricharan Medaboina
+"""
 import pandas as pd
 import matplotlib.pyplot as plt
 

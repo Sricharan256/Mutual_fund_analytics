@@ -1,3 +1,14 @@
+"""
+Bluestock Mutual Fund Analytics
+
+Script: generate_scorecard.py
+
+Purpose:
+Generate a consolidated mutual fund scorecard
+containing performance and risk metrics.
+
+Author: Sricharan Medaboina
+"""
 import pandas as pd
 
 performance = pd.read_csv(

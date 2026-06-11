@@ -1,3 +1,14 @@
+"""
+Bluestock Mutual Fund Analytics
+
+Script: calculate_alpha_beta.py
+
+Purpose:
+Calculate Alpha and Beta metrics for all mutual fund schemes
+by comparing fund returns with benchmark returns.
+
+Author: Sricharan Medaboina
+"""
 import pandas as pd
 from scipy.stats import linregress
 

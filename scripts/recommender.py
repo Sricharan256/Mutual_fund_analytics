@@ -1,3 +1,14 @@
+"""
+Bluestock Mutual Fund Analytics
+
+Script: recommender.py
+
+Purpose:
+Recommend top mutual fund schemes based on
+investor risk appetite and Sharpe Ratio rankings.
+
+Author: Sricharan Medaboina
+"""
 import pandas as pd
 from pathlib import Path
 

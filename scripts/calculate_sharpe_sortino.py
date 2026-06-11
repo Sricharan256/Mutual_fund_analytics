@@ -1,3 +1,14 @@
+
+"""
+Bluestock Mutual Fund Analytics
+
+Script: calculate_sharpe_sortino.py
+
+Purpose:
+Calculate Sharpe and Sortino ratios for all mutual fund schemes.
+
+Author: Sricharan Medaboina
+"""
 import pandas as pd
 import numpy as np
 
