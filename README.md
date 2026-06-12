@@ -1,31 +1,35 @@
 # Bluestock Mutual Fund Analytics Platform
 
-## Overview
+## Project Overview
 
-The Bluestock Mutual Fund Analytics Platform is a comprehensive data analytics project that analyzes mutual fund performance, investor behavior, industry growth trends, and portfolio risk. The project integrates ETL processes, performance analytics, advanced risk metrics, and Power BI dashboard visualization to provide meaningful insights for investors and financial analysts.
+The Bluestock Mutual Fund Analytics Platform is an end-to-end data analytics solution developed to analyze mutual fund performance, investor behavior, industry trends, and portfolio risk. The project combines ETL pipelines, SQLite database management, exploratory data analysis, performance analytics, advanced risk metrics, and Power BI dashboard visualization to provide actionable insights for investors and financial analysts.
 
----
-
-## Problem Statement
-
-Mutual fund investors often face challenges in evaluating fund performance, understanding investment risks, tracking industry trends, and selecting suitable investment options. This project aims to develop a centralized analytics platform that simplifies mutual fund analysis through data-driven insights and interactive visualizations.
+The platform enables users to understand mutual fund growth trends, evaluate fund performance, monitor investment risk, and analyze investor participation through data-driven decision-making.
 
 ---
 
-## Objectives
+# Problem Statement
+
+The mutual fund industry generates large volumes of data related to fund performance, assets under management, investor transactions, portfolio holdings, and benchmark indices. Analyzing this information manually is time-consuming and often results in fragmented insights.
+
+This project aims to develop a centralized analytics platform that automates data processing, performs advanced analytics, and presents insights through interactive dashboards.
+
+---
+
+# Objectives
 
 * Build an automated ETL pipeline for mutual fund datasets.
 * Store processed data in SQLite.
 * Perform Exploratory Data Analysis (EDA).
-* Calculate fund performance metrics.
-* Implement advanced risk analytics.
+* Calculate performance metrics such as CAGR, Sharpe Ratio, Sortino Ratio, Alpha, and Beta.
+* Implement advanced risk analytics including VaR and CVaR.
 * Develop a mutual fund recommendation engine.
 * Create an interactive Power BI dashboard.
 * Generate actionable business insights.
 
 ---
 
-## Technologies Used
+# Technologies Used
 
 * Python
 * Pandas
@@ -33,107 +37,139 @@ Mutual fund investors often face challenges in evaluating fund performance, unde
 * SQLite
 * Matplotlib
 * Jupyter Notebook
-* Power BI
+* Power BI Desktop
+* Git & GitHub
 
 ---
 
-## Project Architecture
+# Project Architecture
 
+```text
 Raw CSV Files
-
-↓
-
-ETL Pipeline
-
-↓
-
-Processed Datasets
-
-↓
-
-SQLite Database
-
-↓
-
-EDA & Analytics
-
-↓
-
-Advanced Analytics
-
-↓
-
-Power BI Dashboard
-
-↓
-
-Business Insights
+      │
+      ▼
+ ETL Pipeline
+      │
+      ▼
+ Cleaned Datasets
+      │
+      ▼
+ SQLite Database
+      │
+      ├────────────► EDA Analysis
+      │
+      ├────────────► Performance Analytics
+      │
+      ├────────────► Advanced Analytics
+      │
+      ▼
+ Power BI Dashboard
+      │
+      ▼
+ Business Insights
+```
 
 ---
 
-## Dataset Description
+# Dataset Description
 
-### Processed Files
+The project uses ten cleaned datasets:
 
-* 01_fund_master_clean.csv
-* 02_nav_history_clean.csv
-* 03_aum_by_fund_house_clean.csv
-* 04_monthly_sip_inflows_clean.csv
-* 05_category_inflows_clean.csv
-* 06_industry_folio_count_clean.csv
-* 07_scheme_performance_clean.csv
-* 08_investor_transactions_clean.csv
-* 09_portfolio_holdings_clean.csv
-* 10_benchmark_indices_clean.csv
+| Dataset                            | Description                  |
+| ---------------------------------- | ---------------------------- |
+| 01_fund_master_clean.csv           | Mutual fund scheme details   |
+| 02_nav_history_clean.csv           | Historical NAV records       |
+| 03_aum_by_fund_house_clean.csv     | AUM by AMC                   |
+| 04_monthly_sip_inflows_clean.csv   | Monthly SIP inflows          |
+| 05_category_inflows_clean.csv      | Category-wise inflows        |
+| 06_industry_folio_count_clean.csv  | Industry folio statistics    |
+| 07_scheme_performance_clean.csv    | Fund performance metrics     |
+| 08_investor_transactions_clean.csv | Investor transaction records |
+| 09_portfolio_holdings_clean.csv    | Portfolio holdings           |
+| 10_benchmark_indices_clean.csv     | Benchmark index performance  |
 
 ---
 
-## Project Structure
+# Project Structure
 
+```text
 mutual_fund_analytics/
-
+│
 ├── data/
-
-│ ├── raw/
-
-│ └── processed/
-
-├── scripts/
-
+│   ├── raw/
+│   └── processed/
+│
 ├── notebooks/
-
+│   ├── 03_eda_analysis.ipynb
+│   ├── 04_performance_analytics.ipynb
+│   └── 05_advanced_analytics.ipynb
+│
+├── scripts/
+│   ├── data_ingestion.py
+│   ├── clean_transactions.py
+│   ├── load_sqlite.py
+│   ├── calculate_cagr.py
+│   ├── calculate_alpha_beta.py
+│   ├── calculate_sharpe_sortino.py
+│   ├── calculate_drawdown.py
+│   ├── recommender.py
+│   └── run_pipeline.py
+│
+├── sql/
+│   ├── schema.sql
+│   └── queries.sql
+│
 ├── dashboard/
-
+│   ├── bluestock_mf_dashboard.pbix
+│   └── bluestock_mf_dashboard.pdf
+│
 ├── reports/
-
+│   ├── Final_Report.pdf
+│   ├── Presentation.pptx
+│   ├── var_cvar_report.csv
+│   ├── cohort_analysis.csv
+│   ├── sip_continuity.csv
+│   └── rolling_sharpe_chart.png
+│
+├── charts/
+│
+├── README.md
 ├── requirements.txt
-
-└── README.md
+└── .gitignore
+```
 
 ---
 
-## Setup Instructions
+# Installation
 
-### Clone Repository
+## Clone Repository
 
 ```bash
 git clone <repository-url>
 cd mutual_fund_analytics
 ```
 
-### Create Virtual Environment
+## Create Virtual Environment
 
 ```bash
 python -m venv venv
 ```
 
-### Activate Environment
+## Activate Virtual Environment
+
+### Windows
 
 ```bash
 venv\Scripts\activate
 ```
 
-### Install Dependencies
+### Git Bash
+
+```bash
+source venv/Scripts/activate
+```
+
+## Install Dependencies
 
 ```bash
 pip install -r requirements.txt
@@ -141,15 +177,23 @@ pip install -r requirements.txt
 
 ---
 
-## Running the Project
+# How to Run
 
-Run the pipeline:
+### Run ETL Pipeline
 
 ```bash
 python scripts/run_pipeline.py
 ```
 
-Run the recommendation engine:
+### Run Performance Analytics
+
+```bash
+python scripts/calculate_cagr.py
+python scripts/calculate_alpha_beta.py
+python scripts/calculate_sharpe_sortino.py
+```
+
+### Run Fund Recommendation Engine
 
 ```bash
 python scripts/recommender.py
@@ -157,9 +201,9 @@ python scripts/recommender.py
 
 ---
 
-## Performance Analytics
+# Performance Analytics
 
-Implemented Metrics:
+Implemented metrics:
 
 * CAGR
 * Alpha
@@ -168,7 +212,7 @@ Implemented Metrics:
 * Sortino Ratio
 * Maximum Drawdown
 
-Generated Outputs:
+Generated outputs:
 
 * cagr.csv
 * alpha_beta.csv
@@ -177,19 +221,19 @@ Generated Outputs:
 
 ---
 
-## Advanced Analytics
+# Advanced Analytics
 
-Implemented Analytics:
+Implemented analytics:
 
 * Historical VaR (95%)
-* CVaR
+* Conditional VaR (CVaR)
 * Rolling 90-Day Sharpe Ratio
 * Investor Cohort Analysis
 * SIP Continuity Analysis
 * Sector HHI Concentration Analysis
 * Fund Recommendation Engine
 
-Generated Outputs:
+Generated outputs:
 
 * var_cvar_report.csv
 * cohort_analysis.csv
@@ -198,14 +242,14 @@ Generated Outputs:
 
 ---
 
-## Power BI Dashboard
+# Dashboard Overview
 
 ### Page 1 – Industry Overview
 
 * Total AUM
 * SIP Inflows
-* Folios
-* Schemes
+* Total Folios
+* Total Schemes
 * Industry AUM Trend
 
 ### Page 2 – Fund Performance
@@ -219,6 +263,7 @@ Generated Outputs:
 * State-wise Investments
 * Transaction Type Analysis
 * Age Group Analysis
+* Monthly Transaction Trends
 
 ### Page 4 – SIP & Market Trends
 
@@ -228,43 +273,63 @@ Generated Outputs:
 
 ---
 
-## Key Findings
+# Key Findings
 
-* Mutual fund industry AUM demonstrated strong growth.
-* SIP contributions remained a major driver of industry expansion.
-* Moderate-risk funds generated strong risk-adjusted returns.
-* Working-age investors represented the highest participation group.
-* Diversified portfolios exhibited lower concentration risk.
+1. Mutual fund industry AUM demonstrated strong growth during the analysis period.
+2. SIP contributions remained a major driver of industry expansion.
+3. Moderate-risk funds generated strong risk-adjusted returns.
+4. Working-age investors represented the largest investor segment.
+5. Diversified portfolios exhibited lower concentration risk than highly concentrated portfolios.
 
 ---
 
-## Deliverables
+# Deliverables
 
 * Final_Report.pdf
-* Bluestock_MF_Presentation.pptx
-* Power BI Dashboard (.pbix)
-* Advanced_Analytics.ipynb
+* Presentation.pptx
+* bluestock_mf_dashboard.pbix
+* bluestock_mf_dashboard.pdf
+* 05_advanced_analytics.ipynb
 * README.md
 * GitHub Repository
 
 ---
 
-## Future Enhancements
+# Version
 
-* Machine Learning-based recommendation engine.
-* Real-time NAV integration.
-* Predictive analytics and forecasting.
-* Cloud deployment of dashboards.
+Current Release: **v1.0**
+
+This version includes:
+
+* ETL Pipeline
+* SQLite Integration
+* EDA Analysis
+* Performance Analytics
+* Advanced Analytics
+* Interactive Dashboard
+* Final Documentation
 
 ---
 
-## Team Members
+# Future Enhancements
+
+* Machine Learning-based recommendation engine
+* Real-time NAV integration
+* Predictive analytics and forecasting
+* Streamlit web application
+* Portfolio optimization models
+
+---
+
+# Team Members
 
 * Sricharan Medaboina
-* Team Members
+* Prashanth Reddy
+* Sri Satya Thanuj Vummidi
+* Praveen Kolluri
 
 ---
 
-## License
+# License
 
 This project was developed for educational and academic purposes only.
