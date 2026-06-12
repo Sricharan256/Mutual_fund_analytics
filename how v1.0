@@ -1,0 +1,336 @@
+[33mcommit a6f2aca1d2c5d37e0cb547f487be7cc6a63bce1a[m[33m ([m[1;33mtag: [m[1;33mv1.0[m[33m)[m
+Author: Sricharan Medaboina <medaboinasricharan@gmail.com>
+Date:   Thu Jun 11 23:29:26 2026 +0530
+
+    Final: Complete Bluestock MF Capstone
+
+[1mdiff --git a/bluestock_mf.db b/bluestock_mf.db[m
+[1mindex 5cb49f0..7ddcfec 100644[m
+Binary files a/bluestock_mf.db and b/bluestock_mf.db differ
+[1mdiff --git a/dashboard/bluestock_mf_dashboard.pbix.pbix b/dashboard/bluestock_mf_dashboard.pbix.pbix[m
+[1mindex bfa9949..d63a00f 100644[m
+Binary files a/dashboard/bluestock_mf_dashboard.pbix.pbix and b/dashboard/bluestock_mf_dashboard.pbix.pbix differ
+[1mdiff --git a/reports/Final_Report.pdf b/reports/Final_Report.pdf[m
+[1mnew file mode 100644[m
+[1mindex 0000000..87e6c7a[m
+[1m--- /dev/null[m
+[1m+++ b/reports/Final_Report.pdf[m
+[36m@@ -0,0 +1,340 @@[m
+[32m+[m[32mBLUESTOCK MUTUAL FUND ANALYTICS PLATFORM[m
+[32m+[m[32mBluestock Mutual Fund Analytics Platform[m
+[32m+[m[32mCapstone Project Report[m
+[32m+[m[32mSubmitted by:[m
+[32m+[m
+[32m+[m[32m    ● Sricharan Medaboina[m
+[32m+[m[32m    ● Team Members[m
+[32m+[m[32mTechnologies Used:[m
+[32m+[m[32m    ● Python[m
+[32m+[m[32m    ● Pandas[m
+[32m+[m[32m    ● NumPy[m
+[32m+[m[32m    ● SQLite[m
+[32m+[m[32m    ● Power BI[m
+[32m+[m[32m    ● Jupyter Notebook[m
+[32m+[m[32mAcademic Year: 2025– 2026[m
+[32m+[m
+[32m+[m[32mExecutive Summary[m
+[32m+[m[32mThe Bluestock Mutual Fund Analytics Platform is a comprehensive data[m
+[32m+[m[32manalytics solution developed to analyze mutual fund performance, investor[m
+[32m+[m[32mbehavior, industry trends, and portfolio risk. The project combines data[m
+[32m+[m[32mengineering, exploratory data analysis, performance measurement, advanced[m
+[32m+[m[32mrisk analytics, and dashboard visualization into a single integrated platform.[m
+[32m+[m[32mThe project begins with collecting and cleaning multiple mutual fund datasets.[m
+[32m+[m[32mAn ETL pipeline was developed using Python to automate extraction,[m
+[32m+[m[32mtransformation, and loading processes. Cleaned data was stored in a SQLite[m
+[32m+[m[32mdatabase and analyzed using Python libraries such as Pandas and NumPy.[m
+[32m+[m[32mSeveral performance metrics including CAGR, Sharpe Ratio, Sortino Ratio,[m
+[32m+[m[32mAlpha, Beta, and Maximum Drawdown were calculated. Advanced analytics[m
+[32m+[m[32mtechniques such as Value at Risk (VaR), Conditional Value at Risk (CVaR),[m
+[32m+[m[32minvestor cohort analysis, SIP continuity analysis, and portfolio concentration[m
+[32m+[m[32manalysis were implemented.[m
+[32m+[m[32mAn interactive Power BI dashboard was developed to visualize key insights[m
+[32m+[m[32mrelated to industry growth, fund performance, investor behavior, and SIP[m
+[32m+[m[32mtrends. The final solution provides investors and analysts with meaningful[m
+[32m+[m[32minsights to support informed decision-making.[m
+[32m+[m
+[32m+[m[32mProblem Statement and Objectives[m
+[32m+[m[32mProblem Statement[m
+[32m+[m[32mThe mutual fund industry generates large amounts of data related to fund[m
+[32m+[m[32mperformance, investor transactions, assets under management, and portfolio[m
+[32m+[m[32mholdings. Investors often struggle to analyze this information effectively and[m
+[32m+[m[32midentify suitable investment opportunities.[m
+[32m+[m[32mTraditional approaches rely on manual analysis and fragmented reports,[m
+[32m+[m[32mmaking it difficult to evaluate risk, compare funds, and understand investor[m
+[32m+[m[32mbehavior.[m
+[32m+[m[32mObjectives[m
+[32m+[m[32mThe primary objectives of this project are:[m
+[32m+[m
+[32m+[m[32m    1. Build an automated ETL pipeline for mutual fund datasets.[m
+[32m+[m[32m    2. Store cleaned data in a structured SQLite database.[m
+[32m+[m[32m    3. Perform exploratory data analysis to identify trends and patterns.[m
+[32m+[m[32m    4. Calculate important performance metrics.[m
+[32m+[m[32m    5. Implement advanced risk analytics techniques.[m
+[32m+[m[32m    6. Develop a mutual fund recommendation engine.[m
+[32m+[m[32m    7. Create an interactive Power BI dashboard.[m
+[32m+[m[32m    8. Generate actionable business insights.[m
+[32m+[m
+[32m+[m[32mData Sources[m
+[32m+[m[32mThe project uses multiple datasets representing different aspects of the[m
+[32m+[m[32mmutual fund ecosystem.[m
+[32m+[m[32mFund Master Dataset[m
+[32m+[m[32mContains details about mutual fund schemes including:[m
+[32m+[m
+[32m+[m[32m    ● AMFI Code[m
+[32m+[m[32m    ● Scheme Name[m
+[32m+[m[32m    ● Fund House[m
+[32m+[m[32m    ● Category[m
+[32m+[m[32m    ● Plan Type[m
+[32m+[m[32mNAV History Dataset[m
+[32m+[m[32mContains historical Net Asset Value records used for:[m
+[32m+[m[32m    ● Return calculations[m
+[32m+[m[32m    ● Risk calculations[m
+[32m+[m[32m    ● Performance comparisons[m
+[32m+[m[32mAUM Dataset[m
+[32m+[m[32mContains assets under management information for different fund houses.[m
+[32m+[m[32mSIP Dataset[m
+[32m+[m[32mContains monthly SIP inflow information used to analyze investor[m
+[32m+[m[32mparticipation and industry growth.[m
+[32m+[m[32mInvestor Transaction Dataset[m
+[32m+[m[32mContains:[m
+[32m+[m[32m    ● Investor ID[m
+[32m+[m[32m    ● Transaction Type[m
+[32m+[m[32m    ● Transaction Date[m
+[32m+[m[32m    ● Investment Amount[m
+[32m+[m[32m    ● Demographic Information[m
+[32m+[m[32mThese datasets collectively provide a complete view of the mutual fund[m
+[32m+[m[32mecosystem.[m
+[32m+[m
+[32m+[m[32mETL Pipeline Design[m
+[32m+[m[32mOverview[m
+[32m+[m[32mETL stands for Extract, Transform, and Load.[m
+[32m+[m[32mThe ETL pipeline was developed to automate data preparation and ensure data[m
+[32m+[m[32mquality before analysis.[m
+[32m+[m[32mExtraction Phase[m
+[32m+[m[32mRaw CSV files were collected from different sources and loaded into Python[m
+[32m+[m[32musing Pandas.[m
+[32m+[m[32mKey Activities:[m
+[32m+[m
+[32m+[m[32m    ● Reading CSV files[m
+[32m+[m[32m    ● Validating schema[m
+[32m+[m[32m    ● Checking data completeness[m
+[32m+[m[32mTransformation Phase[m
+[32m+[m[32mData cleaning operations included:[m
+[32m+[m[32m    ● Missing value handling[m
+[32m+[m[32m    ● Data type conversion[m
+[32m+[m[32m    ● Standardization[m
+[32m+[m[32m    ● Duplicate removal[m
+[32m+[m[32mThese steps improved data consistency and reliability.[m
+[32m+[m
+[32m+[m[32mETL Pipeline Design (Continued)[m
+[32m+[m[32mLoading Phase[m
+[32m+[m[32mAfter transformation, cleaned datasets were stored in:[m
+[32m+[m
+[32m+[m[32m    ● Processed CSV files[m
+[32m+[m[32m    ● SQLite Database[m
+[32m+[m[32mBenefits of ETL Pipeline[m
+[32m+[m
+[32m+[m[32m    1. Improved data quality[m
+[32m+[m[32m    2. Reduced manual effort[m
+[32m+[m[32m    3. Faster analytics[m
+[32m+[m[32m    4. Consistent reporting[m
+[32m+[m[32mScripts Developed[m
+[32m+[m[32m    ● data_ingestion.py[m
+[32m+[m[32m    ● clean_transactions.py[m
+[32m+[m[32m    ● load_sqlite.py[m
+[32m+[m[32m    ● validate_amfi.py[m
+[32m+[m[32mThe ETL process forms the foundation for all subsequent analytics activities.[m
+[32m+[m
+[32m+[m[32mDatabase Design[m
+[32m+[m[32mSQLite was used as the central storage layer for the project.[m
+[32m+[m[32mMain Tables[m
+[32m+[m
+[32m+[m[32m    1. fund_master[m
+[32m+[m[32m    2. nav_history[m
+[32m+[m[32m    3. scheme_performance[m
+[32m+[m[32m    4. investor_transactions[m
+[32m+[m[32m    5. benchmark_indices[m
+[32m+[m[32mRelationships[m
+[32m+[m[32mAMFI Code was used as the primary linking field between tables.[m
+[32m+[m[32mBenefits of using SQLite:[m
+[32m+[m[32m    ● Lightweight[m
+[32m+[m[32m    ● Easy integration with Python[m
+[32m+[m[32m    ● Portable database file[m
+[32m+[m[32m    ● Fast querying for analytics[m
+[32m+[m[32mThe database structure enabled efficient retrieval of information required[m
+[32m+[m[32mfor performance and risk analysis.[m
+[32m+[m
+[32m+[m[32mPage 8 – Exploratory Data Analysis[m
+[32m+[m[32mExploratory Data Analysis (EDA) was conducted to understand the[m
+[32m+[m[32mcharacteristics of the datasets and identify meaningful patterns.[m
+[32m+[m[32mAreas Analyzed[m
+[32m+[m
+[32m+[m[32m    1. Industry Growth[m
+[32m+[m[32m    2. Fund Performance[m
+[32m+[m[32m    3. Investor Behavior[m
+[32m+[m[32m    4. SIP Trends[m
+[32m+[m[32m    5. Portfolio Composition[m
+[32m+[m[32mTools Used[m
+[32m+[m[32m    ● Pandas[m
+[32m+[m[32m    ● Matplotlib[m
+[32m+[m[32m    ● Jupyter Notebook[m
+[32m+[m[32mKey Questions Addressed[m
+[32m+[m[32m    ● How is the mutual fund industry growing?[m
+[32m+[m[32m    ● Which fund houses manage the largest assets?[m
+[32m+[m[32m    ● What investment patterns exist among investors?[m
+[32m+[m[32m    ● How have SIP inflows evolved over time?[m
+[32m+[m[32mEDA provided the foundation for deeper performance and risk analytics.[m
+[32m+[m[32mEDA Findings[m
+[32m+[m[32mIndustry Analysis[m
+[32m+[m[32mInclude:[m
+[32m+[m[32m    ● Industry AUM trend (2022– 2025)[m
+[32m+[m[32m    ● Monthly SIP inflow trend[m
+[32m+[m[32m    ● Folio growth trend[m
+[32m+[m
+[32m+[m[32mFindings:[m
+[32m+[m[32m    ● Mutual fund industry AUM showed consistent growth.[m
+[32m+[m[32m    ● SIP inflows increased steadily, indicating strong retail participation.[m
+[32m+[m[32m    ● Folio counts increased, reflecting growing investor awareness.[m
+[32m+[m
+[32m+[m[32mInvestor Analysis[m
+[32m+[m[32mInclude:[m
+[32m+[m
+[32m+[m[32m    ● State-wise investment chart[m
+[32m+[m[32m    ● Age-group distribution[m
+[32m+[m[32m    ● Transaction type distribution[m
+[32m+[m[32mFindings:[m
+[32m+[m[32m    ● Metropolitan cities contributed the highest investment volume.[m
+[32m+[m[32m    ● SIP transactions formed the majority of investments.[m
+[32m+[m[32m    ● Investors aged 26– 45 represented the largest investor segment.[m
+[32m+[m[32mPerformance Analytics (2 Pages)[m
+[32m+[m[32mMetrics Calculated[m
+[32m+[m[32m    ● CAGR[m
+[32m+[m[32m    ● Sharpe Ratio[m
+[32m+[m[32m    ● Sortino Ratio[m
+[32m+[m[32m    ● Alpha[m
+[32m+[m[32m    ● Beta[m
+[32m+[m[32m    ● Maximum Drawdown[m
+[32m+[m[32mResults[m
+[32m+[m[32mcagr.csv          alpha_beta.csv  sharpe_sortino.csv[m
+[32m+[m[32mmax_drawdown.csv[m
+[32m+[m[32mFindings[m
+[32m+[m[32m    ● Several funds outperformed benchmark returns.[m
+[32m+[m[32m    ● Higher Sharpe Ratio funds delivered better risk-adjusted returns.[m
+[32m+[m[32m    ● Low drawdown funds showed better downside protection.[m
+[32m+[m
+[32m+[m[32mAdvanced Analytics[m
+[32m+[m
+[32m+[m[32mHistorical VaR & CVaR[m
+[32m+[m[32mPurpose:[m
+[32m+[m
+[32m+[m[32m    ● Measure downside risk.[m
+[32m+[m[32mInclude:[m
+[32m+[m[32mvar_cvar_report.csv[m
+[32m+[m[32mRolling Sharpe Ratio[m
+[32m+[m[32mInclude:[m
+[32m+[m[32mInvestor Cohort Analysis[m
+[32m+[m[32mInclude:[m
+[32m+[m[32mSIP Continuity Analysis[m
+[32m+[m
+[32m+[m[32mFund Recommendation System[m
+[32m+[m[32mExample output:[m
+[32m+[m[32mHDFC Top 100 Fund[m
+[32m+[m[32mMirae Asset Large Cap Fund[m
+[32m+[m[32mICICI Prudential Bluechip Fund[m
+[32m+[m[32mHHI Concentration Analysis[m
+[32m+[m[32mExplain:[m
+[32m+[m
+[32m+[m[32m    ● High HHI → concentrated portfolio[m
+[32m+[m[32m    ● Low HHI → diversified portfolio[m
+[32m+[m
+[32m+[m[32mDashboard Analysis[m
+[32m+[m
+[32m+[m[32mIndustry Overview[m
+[32m+[m
+[32m+[m[32mDiscuss:[m
+[32m+[m
+[32m+[m[32mTotal AUM[m
+[32m+[m[32mTotal SIP Inflows[m
+[32m+[m[32mTotal Folios[m
+[32m+[m[32mTotal Scheme[m
+[32m+[m
+[32m+[m[32mFund Performance[m
+[32m+[m
+[32m+[m[32mpage2_fund_performance.png[m
+[32m+[m[32mDiscuss:[m
+[32m+[m[32m    ● Return vs Risk Scatter Plot[m
+[32m+[m[32m    ● Fund Scorecard[m
+[32m+[m[32m    ● NAV vs Benchmark Comparison[m
+[32m+[m
+[32m+[m[32mInvestor Analytics & SIP Trends[m
+[32m+[m[32mpage3_investor_analytics.png , page4_sip_market_trends.png[m
+[32m+[m[32mKey Findings[m
+[32m+[m
+[32m+[m[32m1. Mutual Fund Industry AUM Demonstrated Strong Growth[m
+[32m+[m[32m    ● Assets Under Management (AUM) increased consistently during the[m
+[32m+[m[32m         analysis period.[m
+[32m+[m[32m    ● Growth indicates rising investor confidence in mutual fund investments.[m
+[32m+[m[32m    ● Leading fund houses contributed significantly to overall industry[m
+[32m+[m[32m         expansion.[m
+[32m+[m[32m    ● Increasing AUM reflects the growing popularity of professionally[m
+[32m+[m[32m         managed investment products.[m
+[32m+[m
+[32m+[m[32m2. SIP Contributions Remained the Primary Driver of Industry Expansion[m
+[32m+[m[32m    ● Monthly SIP inflows showed a steady upward trend.[m
+[32m+[m[32m    ● Investors increasingly preferred systematic investing over lump-sum[m
+[32m+[m[32m         investments.[m
+[32m+[m[32m    ● SIPs promoted disciplined investing and long-term wealth creation.[m
+[32m+[m[32m    ● Rising SIP contributions indicate improved financial awareness among[m
+[32m+[m[32m         retail investors.[m
+[32m+[m
+[32m+[m[32m3. Moderate-Risk Funds Generated Strong Risk-Adjusted Returns[m
+[32m+[m[32m    ● Several moderate-risk funds achieved high Sharpe Ratios.[m
+[32m+[m[32m    ● These funds provided a balanced combination of return and risk.[m
+[32m+[m[32m    ● Investors received competitive returns without excessive volatility.[m
+[32m+[m[32m    ● Moderate-risk funds emerged as suitable options for long-term investors.[m
+[32m+[m
+[32m+[m[32m4. Investor Participation Was Highest Among Working-Age Groups[m
+[32m+[m[32m    ● Investors aged 26– 45 accounted for the largest share of investments.[m
+[32m+[m[32m    ● This group showed higher participation in SIP-based investing.[m
+[32m+[m[32m    ● Stable income levels and long-term financial goals contributed to higher[m
+[32m+[m[32m         investments.[m
+[32m+[m[32m    ● Working professionals demonstrated strong interest in wealth[m
+[32m+[m[32m         accumulation through mutual funds.[m
+[32m+[m[32m5. Diversified Portfolios Exhibited Lower Concentration Risk[m
+[32m+[m[32m    ● HHI analysis showed diversified portfolios had lower risk exposure.[m
+[32m+[m[32m    ● Funds with broader holdings were less affected by sector-specific[m
+[32m+[m[32m         downturns.[m
+[32m+[m[32m    ● Diversification improved portfolio stability during market fluctuations.[m
+[32m+[m[32m    ● Well-diversified funds offered better risk management and long-term[m
+[32m+[m[32m         sustainability.[m
+[32m+[m
+[32m+[m[32mRecommendations[m
+[32m+[m[32m1. Encourage Long-Term SIP Investments[m
+[32m+[m
+[32m+[m[32m    ● Promote SIPs as a disciplined and low-risk investment approach.[m
+[32m+[m[32m    ● Educate investors about the benefits of rupee-cost averaging.[m
+[32m+[m[32m    ● Encourage long-term investment horizons to maximize wealth creation.[m
+[32m+[m[32m    ● Increase awareness through investor education programs and campaigns.[m
+[32m+[m[32m2. Promote Diversified Portfolios[m
+[32m+[m[32m    ● Encourage investors to spread investments across multiple sectors and[m
+[32m+[m
+[32m+[m[32m         asset classes.[m
+[32m+[m[32m    ● Reduce dependence on a small number of securities.[m
+[32m+[m[32m    ● Improve portfolio stability during market volatility.[m
+[32m+[m[32m    ● Regularly review portfolio allocations to maintain diversification.[m
+[32m+[m[32m3. Monitor Funds with High VaR and Maximum Drawdown[m
+[32m+[m[32m    ● Investors should evaluate downside risk before investing.[m
+[32m+[m[32m    ● Fund managers should closely monitor schemes with high VaR values.[m
+[32m+[m[32m    ● Risk mitigation strategies should be implemented for highly volatile[m
+[32m+[m
+[32m+[m[32m         funds.[m
+[32m+[m[32m    ● Regular risk assessments can help improve investor confidence.[m
+[32m+[m[32m4. Improve Investor Retention Through SIP Continuity Monitoring[m
+[32m+[m[32m    ● Identify investors with irregular SIP contributions.[m
+[32m+[m[32m    ● Send reminders and notifications for missed SIP payments.[m
+[32m+[m[32m    ● Develop engagement programs for at-risk investors.[m
+[32m+[m[32m    ● Monitor SIP discontinuation rates and take corrective actions.[m
+[32m+[m[32m5. Enhance the Recommendation System Using M
